@@ -1,15 +1,13 @@
 package com.netty.demo.nio;
 
-import java.io.IOException;
-
 /**
  * @author Quan
- * @date 2017/8/20
+ * @date 2017/8/24
  * @desciption
  */
-public class TimeServer {
+public class TimeClient {
 
-    public static void main(String[] args)  throws IOException{
+    public static void main(String[] args) {
         int port = 8080;
         if (args != null && args.length > 0) {
 
@@ -21,8 +19,6 @@ public class TimeServer {
 
         }
 
-        MultiplexerTimerServer timerServer = new MultiplexerTimerServer(port);
-
-        new Thread(timerServer,"NIO-MultiplexerTimerServer-001").start();
+        new Thread(new TimeClientHandle("127.0.0.1",port),"TimeClient-001").start();
     }
 }
