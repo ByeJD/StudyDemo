@@ -26,7 +26,7 @@ public class TimeClientHandle implements Runnable {
 
 
 
-    public TimeClientHandle(String s, int port) {
+    public TimeClientHandle(String host, int port) {
         this.host = host == null ? "127.0.0.1" : host;
         this.port = port;
         try {
