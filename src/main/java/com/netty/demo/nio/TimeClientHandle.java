@@ -24,8 +24,6 @@ public class TimeClientHandle implements Runnable {
     private SocketChannel socketChannel;
     private volatile boolean stop;
 
-
-
     public TimeClientHandle(String host, int port) {
         this.host = host == null ? "127.0.0.1" : host;
         this.port = port;
@@ -87,10 +85,8 @@ public class TimeClientHandle implements Runnable {
 
     private void handleInput(SelectionKey key) throws IOException{
         if(key.isValid()){
-
-
             SocketChannel sc = (SocketChannel) key.channel();
-            if(sc.isConnected()){
+            if(key.isConnectable()){
                 if(sc.finishConnect()){
                     sc.register(selector,SelectionKey.OP_READ);
                     doWrite(sc);
@@ -138,10 +134,13 @@ public class TimeClientHandle implements Runnable {
 
     private void doConnect() throws IOException {
 
+        System.out.println("connection");
         if(socketChannel.connect(new InetSocketAddress(host,port))){
+            System.out.println("1");
             socketChannel.register(selector,SelectionKey.OP_READ);
             doWrite(socketChannel);
         }else {
+            System.out.println("2");
             socketChannel.register(selector,SelectionKey.OP_CONNECT);
         }
     }

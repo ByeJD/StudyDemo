@@ -21,10 +21,10 @@ import java.util.Set;
  */
 public class MultiplexerTimerServer  implements  Runnable{
 
-    public Selector selector;
-    public ServerSocketChannel serverSocketChannel;
+    private Selector selector;
+    private ServerSocketChannel serverSocketChannel;
 
-    public volatile boolean stop;
+    private volatile boolean stop;
 
 
     /**
@@ -62,6 +62,7 @@ public class MultiplexerTimerServer  implements  Runnable{
 
     public void run() {
         while (!stop){
+            System.out.println("run");
             try {
                 selector.select(1000);
                 Set<SelectionKey> selectionKeySet = selector.selectedKeys();
@@ -141,6 +142,7 @@ public class MultiplexerTimerServer  implements  Runnable{
             byte[] bytes = response.getBytes();
             ByteBuffer writeBuffer = ByteBuffer.allocate(bytes.length);
             writeBuffer.put(bytes);
+            writeBuffer.flip();
             channel.write(writeBuffer);
         }
     }
