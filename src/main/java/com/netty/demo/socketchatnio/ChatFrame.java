@@ -20,7 +20,6 @@ import javax.swing.event.ListSelectionListener;
 
 /**
  * 聊天室窗体
- * @author zing
  *
  */
 public class ChatFrame {
