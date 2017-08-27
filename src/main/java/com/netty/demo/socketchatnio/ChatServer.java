@@ -16,7 +16,7 @@ import java.util.Vector;
 
 /**
  * 聊天室:服务端
- * @author zing
+ *
  *
  */
 public class ChatServer implements Runnable {
