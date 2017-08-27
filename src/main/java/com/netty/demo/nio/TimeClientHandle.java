@@ -107,13 +107,18 @@ public class TimeClientHandle implements Runnable {
                     readBuffer.get(bytes);
                     String body = new String(bytes,"UTF-8");
                     System.out.println("The time server receive order : " + body);
-                    this.stop = true;
+                    //this.stop = true;
                 }else if(readBytes < 0){
                     key.cancel();
                     sc.close();
                 }else {
                     ; // 读到0字节忽略
                 }
+
+            }
+
+            if(key.isWritable()){
+
             }
         }
     }
@@ -135,6 +140,7 @@ public class TimeClientHandle implements Runnable {
     private void doConnect() throws IOException {
 
         System.out.println("connection");
+        // 连接到目标主机的地址和端口号，如果连接成功
         if(socketChannel.connect(new InetSocketAddress(host,port))){
             System.out.println("1");
             socketChannel.register(selector,SelectionKey.OP_READ);

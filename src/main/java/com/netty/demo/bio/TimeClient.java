@@ -47,6 +47,8 @@ public class TimeClient {
 	BufferedReader in = null;
 	PrintWriter out = null;
 	try {
+
+		// Creates a stream socket and connects it to the specified port number on the named host.
 	    socket = new Socket("127.0.0.1", port);
 	    in = new BufferedReader(new InputStreamReader(
 		    socket.getInputStream()));

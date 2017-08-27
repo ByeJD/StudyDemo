@@ -108,7 +108,7 @@ public class MultiplexerTimerServer  implements  Runnable{
                 SocketChannel sc = ssc.accept();
                 sc.configureBlocking(false);
                 // Add the new connection to the selector
-                sc.register(selector,SelectionKey.OP_READ);
+                sc.register(selector,SelectionKey.OP_READ | SelectionKey.OP_WRITE);
             }
 
             if(key.isReadable()){
@@ -131,6 +131,10 @@ public class MultiplexerTimerServer  implements  Runnable{
                 }else {
                     ; // 读到0字节忽略
                 }
+            }
+
+            if(key.isWritable()){
+
             }
         }
     }
