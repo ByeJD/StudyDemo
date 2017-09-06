@@ -1,5 +1,10 @@
 package designpatternstudy;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 // Component（抽象构件）
 abstract class MyInputStream{
     public abstract void read();
@@ -49,7 +54,10 @@ class MyBufferedInputStream extends  MyFilterInputStream{
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+//        File file = new File ("hello.txt");
+//        FileInputStream in=new FileInputStream(file);
+//        BufferedInputStream inBuffered=new BufferedInputStream (in);
         MyBufferedInputStream myBufferedInputStream = new MyBufferedInputStream(new MyFileInputStream());
     }
 }
