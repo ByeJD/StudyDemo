@@ -11,7 +11,7 @@ interface Target {
 
 }
 
-// 源(Adapee)角色：现在需要适配的接口。
+// 源(Adapee)角色：现在需要适配的类。
 class qqchaoren {
 
     public void QQChaoren_m1(){}
@@ -20,7 +20,7 @@ class qqchaoren {
 
 }
 
-// 源(Adapee)角色：现在需要适配的接口。
+// 源(Adapee)角色：现在需要适配的类。
 class damatu{
     public void damatu_m1(){}
     public void damatu_m2(){}
