@@ -9,7 +9,7 @@ package thinkinjavademo.chapter10;
  *
  * @author 刘全权
  * @version $Id: Sequence, v0.1
- * @company 杭州信牛网络科技有限公司
+
  * @date 2017年09月13日 19:10 Exp $
  */
 interface  Selector{
