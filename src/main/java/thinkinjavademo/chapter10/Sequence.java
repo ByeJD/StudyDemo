@@ -4,6 +4,9 @@
  */
 package thinkinjavademo.chapter10;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 用途描述
  *
@@ -18,6 +21,8 @@ interface  Selector{
     void next();
 }
 public class Sequence {
+
+    Map<String,String> m = new HashMap<String, String>();
     private Object[] items;
     private int next = 0;
     public Sequence(int size){
@@ -47,9 +52,31 @@ public class Sequence {
         }
     }
 
+    private class ReverseSelector implements Selector{
+
+        private int i = items.length;
+        public boolean end() {
+            return 0 == items.length;
+        }
+
+        public Object current() {
+            return items[i];
+        }
+
+        public void next() {
+            if(i > 0){
+                i--;
+            }
+        }
+    }
+
 
     public Selector selector(){
         return new SequenceSelector();
+    }
+
+    public Selector reverseSelector(){
+        return new ReverseSelector();
     }
 
     public static void main(String[] args) {
