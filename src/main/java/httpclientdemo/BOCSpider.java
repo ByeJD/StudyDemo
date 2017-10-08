@@ -26,7 +26,9 @@ import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用途描述
@@ -90,10 +92,18 @@ public class BOCSpider {
 //                }
 //            }
         }
+         Map<String,String> m = new HashMap<String,String>();
 
         return httpclient;
     }
 
+
+    private static StringEntity jsonBasedPost(String jsonText){
+        StringEntity entity = new StringEntity(jsonText,"UTF-8");//解决中文乱码问题
+        entity.setContentEncoding("UTF-8");
+        entity.setContentType("text/json");
+        return entity;
+    }
     public static void test() {
         try {
             ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
@@ -131,10 +141,8 @@ public class BOCSpider {
 
 
             String parameter = "{\"header\":{\"local\":\"zh_CN\",\"agent\":\"WEB15\",\"bfw-ctrl\":\"json\",\"version\":\"\",\"device\":\"\",\"platform\":\"\",\"plugins\":\"\",\"page\":\"\",\"ext\":\"\"},\"request\":[{\"id\":3,\"method\":\"PSNCreatConversationLoginPre\",\"conversationId\":null,\"params\":null}]}";
-            StringEntity entity = new StringEntity(parameter,"UTF-8");//解决中文乱码问题
-            entity.setContentEncoding("UTF-8");
-            entity.setContentType("text/json");
-            httpPost.setEntity(entity);
+
+            httpPost.setEntity(jsonBasedPost(parameter));
 
             CloseableHttpResponse response = httpClient.execute(httpPost);
             HttpEntity httpEntity = response.getEntity();
