@@ -2,7 +2,7 @@
  * @company 杭州信牛网络科技有限公司
  * @copyright Copyright (c) 2015 - 2017
  */
-package com.netty.demo.nettydemo;
+package com.netty.demo.nettydemo.discard;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -29,19 +29,19 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx,Object msg){
         // Discard the received data silently
 
-        ByteBuf in = (ByteBuf)msg;
-        Charset charset = Charset.forName("UTF-8");
-        try {
-            while (in.isReadable()){
-                System.out.println(in.toString(charset));
-                System.out.flush();
-                in.clear();
-            }
-        }finally {
-            ReferenceCountUtil.release(msg);
-        }
-        ctx.write("test : "+msg);
-        ctx.flush();
+//        ByteBuf in = (ByteBuf) msg;
+//        try {
+//            while (in.isReadable()) { // (1)
+//                System.out.print((char) in.readByte());
+//                System.out.flush();
+//            }
+//        } finally {
+//            ReferenceCountUtil.release(msg); // (2)
+//        }
+//        ctx.write("test : "+msg);
+//        ctx.flush();
+        ctx.write("sdf"+msg); // (1)
+        ctx.flush(); // (2)
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx,Throwable cause){

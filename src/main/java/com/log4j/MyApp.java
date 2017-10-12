@@ -11,6 +11,7 @@ public class MyApp {
     private static final Logger logger = LoggerFactory.getLogger(MyApp.class);
 
     public static void main(String[] args) {
+
         logger.info("test");
     }
 }

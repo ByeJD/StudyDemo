@@ -17,8 +17,8 @@ import thinkinjavademo.chapter10.pack2.Class1;
  * @date 2017年09月13日 20:20 Exp $
  */
 
-public class Pack3Class extends Class1 {
-    public interface1 m1(){
-        return new Class1();
-    }
-}
+//public class Pack3Class extends Class1 {
+//    public interface1 m1(){
+//        //return new Class1();
+//    }
+//}

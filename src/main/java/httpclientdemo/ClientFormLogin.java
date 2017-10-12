@@ -34,91 +34,13 @@ public class ClientFormLogin {
         try {
 
 
-            HttpGet httpget = new HttpGet("http://www.lzzfgjj.com/login.jspx");
+            HttpGet httpget = new HttpGet("https://xueqiu.com/");
             CloseableHttpResponse response1 = httpclient.execute(httpget);
             try {
                 HttpEntity entity = response1.getEntity();
 
                 System.out.println("Login form get: " + response1.getStatusLine());
-                EntityUtils.consume(entity);
-
-                System.out.println("Initial set of cookies:");
-                List<Cookie> cookies = cookieStore.getCookies();
-                if (cookies.isEmpty()) {
-                    System.out.println("None");
-                } else {
-                    for (int i = 0; i < cookies.size(); i++) {
-                        System.out.println("- " + cookies.get(i).toString());
-                    }
-                }
-            } finally {
-                response1.close();
-            }
-
-            HttpGet httpgetCaptcha = new HttpGet("http://www.lzzfgjj.com//captcha.svl");
-            response1 = httpclient.execute(httpgetCaptcha);
-            try {
-                HttpEntity entity = response1.getEntity();
-
-
-                System.out.println("Login form get: " + response1.getStatusLine());
-                saveCaptcha(entity.getContent());
-                EntityUtils.consume(entity);
-
-                System.out.println("Initial set of cookies:");
-                List<Cookie> cookies = cookieStore.getCookies();
-                if (cookies.isEmpty()) {
-                    System.out.println("None");
-                } else {
-                    for (int i = 0; i < cookies.size(); i++) {
-                        System.out.println("- " + cookies.get(i).toString());
-                    }
-                }
-            } finally {
-                response1.close();
-            }
-
-            Scanner scanner = new Scanner(System.in);
-            String captchaCode = scanner.nextLine();
-            HttpUriRequest login = RequestBuilder.post()
-                    .setUri(new URI("http://www.lzzfgjj.com/login.jspx"))
-                    .addParameter("username", "450203197907081036")
-                    .addParameter("password", "123456")
-                    .addParameter("captcha",captchaCode)
-                    .build();
-            CloseableHttpResponse response2 = httpclient.execute(login);
-            try {
-                HttpEntity entity = response2.getEntity();
-
-                System.out.println("Login form get: " + response2.getStatusLine());
                 System.out.println(EntityUtils.toString(entity));
-                EntityUtils.consume(entity);
-
-
-                System.out.println("Post logon cookies:");
-                List<Cookie> cookies = cookieStore.getCookies();
-                if (cookies.isEmpty()) {
-                    System.out.println("None");
-                } else {
-                    for (int i = 0; i < cookies.size(); i++) {
-                        System.out.println("- " + cookies.get(i).toString());
-                    }
-                }
-            } finally {
-                response2.close();
-            }
-
-
-    // http://www.lzzfgjj.com/grcx/grcx_grjbqk.jspx
-            HttpGet httpgetBriefPage = new HttpGet("http://www.lzzfgjj.com/grcx/grcx_grjbqk.jspx");
-            response1 = httpclient.execute(httpgetBriefPage);
-            try {
-                HttpEntity entity = response1.getEntity();
-
-
-                System.out.println("Login form get: " + response1.getStatusLine());
-                System.out.println(EntityUtils.toString(entity));
-                EntityUtils.consume(entity);
 
                 System.out.println("Initial set of cookies:");
                 List<Cookie> cookies = cookieStore.getCookies();
@@ -132,10 +54,111 @@ public class ClientFormLogin {
             } finally {
                 response1.close();
             }
-        } finally {
-            httpclient.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
+//            HttpGet httpget = new HttpGet("https://xueqiu.com/");
+//            CloseableHttpResponse response1 = httpclient.execute(httpget);
+//            try {
+//                HttpEntity entity = response1.getEntity();
+//
+//                System.out.println("Login form get: " + response1.getStatusLine());
+//                EntityUtils.consume(entity);
+//
+//                System.out.println("Initial set of cookies:");
+//                List<Cookie> cookies = cookieStore.getCookies();
+//                if (cookies.isEmpty()) {
+//                    System.out.println("None");
+//                } else {
+//                    for (int i = 0; i < cookies.size(); i++) {
+//                        System.out.println("- " + cookies.get(i).toString());
+//                    }
+//                }
+//            } finally {
+//                response1.close();
+//            }
+//            HttpGet httpgetCaptcha = new HttpGet("http://www.lzzfgjj.com//captcha.svl");
+//            response1 = httpclient.execute(httpgetCaptcha);
+//            try {
+//                HttpEntity entity = response1.getEntity();
+//
+//
+//                System.out.println("Login form get: " + response1.getStatusLine());
+//                saveCaptcha(entity.getContent());
+//                EntityUtils.consume(entity);
+//
+//                System.out.println("Initial set of cookies:");
+//                List<Cookie> cookies = cookieStore.getCookies();
+//                if (cookies.isEmpty()) {
+//                    System.out.println("None");
+//                } else {
+//                    for (int i = 0; i < cookies.size(); i++) {
+//                        System.out.println("- " + cookies.get(i).toString());
+//                    }
+//                }
+//            } finally {
+//                response1.close();
+//            }
+//
+//            Scanner scanner = new Scanner(System.in);
+//            String captchaCode = scanner.nextLine();
+//            HttpUriRequest login = RequestBuilder.post()
+//                    .setUri(new URI("http://www.lzzfgjj.com/login.jspx"))
+//                    .addParameter("username", "450203197907081036")
+//                    .addParameter("password", "123456")
+//                    .addParameter("captcha",captchaCode)
+//                    .build();
+//            CloseableHttpResponse response2 = httpclient.execute(login);
+//            try {
+//                HttpEntity entity = response2.getEntity();
+//
+//                System.out.println("Login form get: " + response2.getStatusLine());
+//                System.out.println(EntityUtils.toString(entity));
+//                EntityUtils.consume(entity);
+//
+//
+//                System.out.println("Post logon cookies:");
+//                List<Cookie> cookies = cookieStore.getCookies();
+//                if (cookies.isEmpty()) {
+//                    System.out.println("None");
+//                } else {
+//                    for (int i = 0; i < cookies.size(); i++) {
+//                        System.out.println("- " + cookies.get(i).toString());
+//                    }
+//                }
+//            } finally {
+//                response2.close();
+//            }
+//
+//
+//    // http://www.lzzfgjj.com/grcx/grcx_grjbqk.jspx
+//            HttpGet httpgetBriefPage = new HttpGet("http://www.lzzfgjj.com/grcx/grcx_grjbqk.jspx");
+//            response1 = httpclient.execute(httpgetBriefPage);
+//            try {
+//                HttpEntity entity = response1.getEntity();
+//
+//
+//                System.out.println("Login form get: " + response1.getStatusLine());
+//                System.out.println(EntityUtils.toString(entity));
+//                EntityUtils.consume(entity);
+//
+//                System.out.println("Initial set of cookies:");
+//                List<Cookie> cookies = cookieStore.getCookies();
+//                if (cookies.isEmpty()) {
+//                    System.out.println("None");
+//                } else {
+//                    for (int i = 0; i < cookies.size(); i++) {
+//                        System.out.println("- " + cookies.get(i).toString());
+//                    }
+//                }
+//            } finally {
+//                response1.close();
+//            }
+//        } finally {
+//            httpclient.close();
+//        }
+
 
     private static void saveCaptcha(InputStream inStream) throws Exception {
         byte[] data = readInputStream(inStream);
