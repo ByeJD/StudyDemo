@@ -11,8 +11,6 @@ import java.util.EmptyStackException;
  * 用途描述
  *
  * @author 刘全权
- * @version $Id: Stack1, v0.1
- * @company 杭州信牛网络科技有限公司
  * @date 2017年10月13日 0:28 Exp $
  */
 

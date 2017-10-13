@@ -27,7 +27,7 @@ public class Holder3<T> {
     }
 
     public static void main(String[] args) {
-        Holder3<AutoMobile> autoMobileHolder3 = new Holder3<>(new AutoMobile());
+        Holder3<AutoMobile> autoMobileHolder3 = new Holder3<AutoMobile>(new AutoMobile());
         AutoMobile autoMobile = autoMobileHolder3.getA(); // 不用强制转换，编译器已经为我们完成。
     }
 }
